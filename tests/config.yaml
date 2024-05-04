@@ -1,0 +1,80 @@
+demo:
+  clip_0: "D:/datasets/g3d/clips/Tennis/KinectOutput197_cut.mp4"
+  clip_1: "D:/datasets/g3d/clips/Tennis/KinectOutput196_cut.mp4"
+tests:
+  clip_loaders:
+    use: [ "easy", "hard" ]
+    augmented:
+      clip_directory: "Z:/video_synchronization/test_dataset/augmented"
+      annotations_file: "Z:/video_synchronization/test_dataset/augmented/annotations.json"
+    easy:
+      clip_directory: "Z:/replay_clips"
+      annotations_file: "Z:/video_synchronization/test_dataset/annotated/easy_annotations.json"
+    hard:
+      clip_directory: "Z:/replay_clips"
+      annotations_file: "Z:/video_synchronization/test_dataset/annotated/hard_annotations.json"
+  metric: "correct_frames"
+  correct_frames:
+    unit: "frame"
+    allowed_error_rates: [ 1, 3, 5 ]
+  differences:
+    normalize: True
+  save_elapsed_time: False
+augmentations:
+  max_size: [ 224, 398 ]
+  ignore_top: 0
+  ignore_bottom: 0
+results:
+  output_directory: "D:/videosnapping_results/"
+  clip_ext: "mp4"
+  plot_ext: "png"
+  save_plots: True
+  colormap: "gray"
+  visualization: null
+cost_matrices:
+  device: "cuda"
+  fps: 25
+  cache_directory: "C:/Users/Chyron/projects/ai-video-synchronization/video_snapping/cache"
+  use_cache: False
+  histogram_method: "paper"
+  histogram_parameters:
+    d_decay: 0.1
+    s_decay: null
+  cost_matrix_parameters:
+    alpha: 4
+  opencv:
+    use: [ "SIFT", "ORB", "KAZE", "BRISK", "BoostDesc", "DAISY", "FREAK", "LATCH", "VGG" ]
+    default_keypoint_detector: "SIFT"
+  third_party:
+    use: [ "D2Net", "SuperPoint", "R2D2" ]
+    D2Net:
+      model_path: "C:/Users/Chyron/projects/ai-video-synchronization/pretrained/d2_tf.pth"
+      use_relu: True
+      scales: [1]
+      preprocessing: "caffe"
+    SuperPoint:
+      keypoint_threshold: 0.005
+      nms_radius: 4
+      remove_borders: 4
+      max_keypoints: -1
+    R2D2:
+      model_path: "C:/Users/Chyron/projects/ai-video-synchronization/third_party/r2d2/models/r2d2_WASF_N16.pt"
+      top_k: 1000
+      reliability_thr: 0.7
+      repeatability_thr: 0.7
+      min_scale: 0.3
+      max_scale: 1
+  kornia:
+    use: [ "MKDDescriptor", "TFeat", "SOSNet", "HyNet", "HardNet", "HardNet8" ]
+    use_affnet: False
+    max_sift_features: null
+path_finding:
+  partial_overlap:
+    use: False
+    min_path_length: 50
+  warping_constraints:
+    use: False
+    path_length_for_slope_estimation: 10
+    min_slope: 0.1
+    max_slope: 10
+    penalty: 1000
