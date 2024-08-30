@@ -1,4 +1,4 @@
-# Video synchronization
+# Event Synchronization in Multiple Video Recordings
 
 A code for my [bachelor's thesis](is.muni.cz/th/cyoc1/thesis.pdf), which implements [VideoSnapping method](https://studios.disneyresearch.com/wp-content/uploads/2019/03/VideoSnapping-Interactive-Synchronization-of-Multiple-Videos-1.pdf) for video synchronization with support for various descriptors to detect image features and evaluates it on synchronization of soccer videos.
 
