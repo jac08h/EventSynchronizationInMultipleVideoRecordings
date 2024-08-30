@@ -1,8 +1,17 @@
 # Video synchronization
 
-Implementation
-of [VideoSnapping method](https://studios.disneyresearch.com/wp-content/uploads/2019/03/VideoSnapping-Interactive-Synchronization-of-Multiple-Videos-1.pdf)
-for video synchronization with support for various descriptors to detect image features.
+A code for my [bachelor's thesis](is.muni.cz/th/cyoc1/thesis.pdf), which implements [VideoSnapping method](https://studios.disneyresearch.com/wp-content/uploads/2019/03/VideoSnapping-Interactive-Synchronization-of-Multiple-Videos-1.pdf) for video synchronization with support for various descriptors to detect image features and evaluates it on synchronization of soccer videos.
+
+## Example output
+Synchronization of two clips from [SoccerNet](https://www.soccer-net.org/):
+
+https://github.com/user-attachments/assets/4193918a-f4b3-431c-90fc-7e4567154a12
+
+After the ~37th frame, the videos are synchronized with only a small error:
+
+![cost matrix visualization](https://github.com/user-attachments/assets/9d8e65b0-8224-4568-b901-94fd5cb33d67).
+
+(While manually selected, this example is representative of the method's accuracy on the videos with similar level of visual disparity. Cost matrices for all videos in the test dataset can be found in the thesis' appendix.)
 
 ## Supported descriptors
 
